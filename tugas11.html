@@ -1,0 +1,496 @@
+<<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Muhamad Rifki Fauzan</title>
+    <!-- Memuat Bootstrap 5 CSS dari CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Memuat Ikon Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <style>
+        /* CSS Kustom (Tema Merah, Hitam, Putih McQueen) */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; /* Hampir Putih */
+        }
+        
+        /* Warna Merah Khas McQueen */
+        :root {
+            --mcqueen-red: #B91C1C; /* Deep Red */
+            --mcqueen-dark: #1f2937; /* Dark Gray/Black */
+        }
+        
+        .navbar-custom {
+            background-color: var(--mcqueen-dark); /* Hitam untuk Navbar */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-section {
+            /* Latar Belakang Bertema Balap (Red Gradient) */
+            background: linear-gradient(135deg, var(--mcqueen-red) 0%, #7f1d1d 100%); 
+            color: white;
+            padding: 80px 0 50px 0; /* Padding lebih kecil di bawah untuk menampung input */
+            margin-bottom: 30px;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 8px 15px rgba(185, 28, 28, 0.5); /* Bayangan Merah */
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-img-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border: 5px solid white; /* Border Putih */
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+        }
+
+        .edit-icon {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background-color: var(--mcqueen-dark);
+            color: white;
+            padding: 5px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid white;
+        }
+
+        .section-title {
+            border-left: 5px solid var(--mcqueen-red);
+            padding-left: 15px;
+            margin-bottom: 30px;
+            font-weight: 700;
+            color: var(--mcqueen-dark);
+        }
+        .card-project {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 10px;
+        }
+        .card-project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(185, 28, 28, 0.4); /* Bayangan Merah saat Hover */
+        }
+        .skill-badge {
+            background-color: var(--mcqueen-red);
+            color: white;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            display: inline-block;
+        }
+        /* Gaya untuk Timeline Pendidikan */
+        .timeline {
+            position: relative;
+            padding: 0;
+            list-style: none;
+        }
+        .timeline:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            margin-left: -1.5px;
+            background-color: #e9ecef;
+        }
+        .timeline > li {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .timeline > li:after, .timeline > li:before {
+            content: " ";
+            display: table;
+        }
+        .timeline > li:after {
+            clear: both;
+        }
+        .timeline > li > .timeline-panel {
+            width: 45%;
+            float: left;
+            border: 1px solid #d4d4d4;
+            border-radius: 4px;
+            padding: 20px;
+            position: relative;
+            background: white;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+        }
+        .timeline > li.timeline-inverted > .timeline-panel {
+            float: right;
+        }
+        .timeline > li > .timeline-badge {
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            line-height: 25px;
+            font-size: 1.2em;
+            text-align: center;
+            position: absolute;
+            top: 16px;
+            left: 50%;
+            margin-left: -15px;
+            background-color: var(--mcqueen-red); /* Merah */
+            z-index: 100;
+            border-radius: 50%;
+        }
+        /* Mobile adjustment for timeline */
+        @media (max-width: 767px) {
+            .timeline:before {
+                left: 18px;
+            }
+            .timeline > li > .timeline-panel {
+                width: calc(100% - 40px);
+                float: right;
+            }
+            .timeline > li > .timeline-badge {
+                left: 18px;
+                margin-left: 0;
+                top: 22px;
+            }
+        }
+        /* Style for Photo Input Section */
+        #photo-input-container {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar (BOSSTRAP) -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Rifki Fauzan Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#about">Tentang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education">Pendidikan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Keahlian</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Proyek</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#album">Album</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Kontak</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Tampilkan Nama dan Asal Sekolah) -->
+    <header class="hero-section">
+        <div class="container text-center">
+            
+            <!-- Tempat Menyimpan Foto Profil -->
+            <div class="profile-img-container mb-4">
+                <img id="" src="f4.jpeg" class="rounded-circle profile-img" alt="">
+                <i class="bi bi-camera-fill edit-icon" onclick="document.getElementById('photo-input-container').classList.toggle('d-none');"></i>
+            </div>
+            
+            <h1 class="display-4 fw-bold">Muhamad Rifki Fauzan</h1>
+            <p class="lead fw-light">Siswa | Pengembang Web Pemula</p>
+            <span class="badge bg-white text-dark fs-5 mt-2">SMAN 10 GARUT</span>
+
+            <!-- Input URL Foto Profil (Tersembunyi secara default) -->
+            <div id="photo-input-container" class="d-none mx-auto mt-4 col-md-8 col-lg-6">
+                <div class="input-group">
+                    <input type="url" id="imageURL" class="form-control" placeholder="Masukkan URL Gambar Profil Baru" aria-label="URL Gambar">
+                    <button class="btn btn-dark" type="button" onclick="updateProfileImage()">Perbarui Foto</button>
+                </div>
+                <small class="text-secondary mt-1 d-block">Klik ikon kamera pada foto untuk menyembunyikan/menampilkan kolom ini.</small>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- Tentang Saya -->
+        <section id="about" class="mb-5 py-4">
+            <h2 class="section-title">Tentang Saya</h2>
+            <div class="card p-4 shadow-sm">
+                <p class="fs-5">
+                    Halo! Saya **Muhamad Rifki Fauzan**, seorang siswa yang saat ini menempuh pendidikan di **SMAN 10 Garut**. Saya memiliki ketertarikan yang besar terhadap dunia teknologi dan pengembangan web, terutama di bidang *CODDING*. Saya percaya bahwa teknologi dapat menyelesaikan masalah sehari-hari dengan cara yang inovatif.
+                </p>
+                <p>
+                    Saya antusias untuk belajar dan mencoba hal-hal baru, mulai dari dasar-dasar HTML, styling dengan CSS, hingga menggunakan kerangka kerja seperti Bootstrap untuk membangun antarmuka pengguna yang responsif dan menarik. Saya fokus pada pengembangan keterampilan dan siap untuk berkolaborasi dalam proyek-proyek yang menantang.
+                </p>
+            </div>
+        </section>
+        
+        <!-- Pendidikan -->
+        <section id="education" class="mb-5 py-4">
+            <h2 class="section-title">Pendidikan</h2>
+            <ul class="timeline">
+                <!-- SMAN 10 GARUT -->
+                <li>
+                    <div class="timeline-badge"><i class="bi bi-book"></i></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4 class="timeline-title">SMAN 10 GARUT</h4>
+                            <p><small class="text-muted">Juli 2023 - Sekarang</small></p>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Menempuh pendidikan menengah atas. suka mencoba hal-hal yang berbau teknologi dan fokus pada mata pelajaran yang merangsang logika dan kreativitas.</p>
+                        </div>
+                    </div>
+                </li>
+                <!-- SMP/MTs -->
+                <li class="timeline-inverted">
+                    <div class="timeline-badge"><i class="bi bi-house"></i></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4 class="timeline-title">SMPN 1 LEUWIGONGG</h4>
+                            <p><small class="text-muted">2020 - 2023</small></p>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Mendapatkan dasar-dasar pengetahuan dan mengembangkan minat awal pada ilmu pengetahuan dan komputer.</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Keahlian -->
+        <section id="skills" class="mb-5 py-4">
+            <h2 class="section-title">Keahlian Teknis</h2>
+            <div class="card p-4 shadow-sm">
+                <div class="d-flex flex-wrap justify-content-center justify-content-md-start">
+                    <span class="skill-badge">suka di marahin mamah</span>
+                    <span class="skill-badge">introvert</span>
+                    <span class="skill-badge">selalu mengalah</span>
+                    <span class="skill-badge">penyabar</span>
+                    <span class="skill-badge">suka mie</span>
+                    <span class="skill-badge">BEBAN</span>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Proyek (BERUBAH MENJADI ANEH/UNIK) -->
+        <section id="projects" class="mb-5 py-4">
+            <h2 class="section-title">Proyek Pilihan </h2>
+            <div class="row g-4">
+                
+                <!-- Proyek 1: Kalkulator Baper -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-project shadow-sm h-100">
+                        <!-- Placeholder Aneh/Unik -->
+                        <img src="https://placehold.co/600x400/1f2937/ffffff?text=EMOSI" class="card-img-top" alt="PEMBALAP ">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold text-danger">Kalkulator Baper (Bawa Perasaan)</h5>
+                            <p class="card-text">Aplikasi web yang memberikan hasil perhitungan yang berbeda-beda tergantung pada waktu, cuaca, atau mood pengguna yang terdeteksi secara acak. **(Dibuat hanya untuk iseng)**.</p>
+                            <span class="badge bg-secondary">JavaScript</span>
+                            <span class="badge bg-secondary">Random API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyek 2: Pengacak Peta -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-project shadow-sm h-100">
+                        <!-- Placeholder Aneh/Unik -->
+                        <img src="https://placehold.co/600x400/B91C1C/ffffff?text=KOORDINAT" class="card-img-top" alt="Proyek Pengacak Peta">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold text-danger">Pengacak Peta Lokasi Garut</h5>
+                            <p class="card-text">Sebuah alat yang mengambil koordinat acak di sekitar Garut dan menampilkan gambar *street view* yang paling tidak berguna atau paling membingungkan di lokasi tersebut. **(Proyek Anti-Navigasi)**.</p>
+                            <span class="badge bg-secondary">HTML</span>
+                            <span class="badge bg-secondary">Geo API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyek 3: Generator Nama Tim Balap Fiksi -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-project shadow-sm h-100">
+                        <!-- Placeholder Aneh/Unik -->
+                        <img src="https://placehold.co/600x400/1f2937/ffffff?text=BALAP+ANEH" class="card-img-top" alt="Proyek Generator Nama Tim Balap Fiksi">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold text-danger"></h5>
+                            <p class="card-text">Generator nama yang menggabungkan kata-kata tidak nyambung (misalnya: 'Nasi Goreng' + 'Turbo' + 'Anti-Rem') untuk membuat nama tim balap fiksi yang paling tidak meyakinkan.</p>
+                            <span class="badge bg-secondary">JavaScript</span>
+                            <span class="badge bg-secondary">Logika String</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div ><h1>FAVORITE</h1></div >
+            <!-- Album Photo Display -->
+            <div class="row g-4">
+                <!-- Photo 1 -->
+                <div class="col-6 col-md-3">
+                    <div class="card bg-dark card-project h-100 p-1">
+                        <img id="" src="mcqueen4.jpg" class="img-fluid rounded" style="aspect-ratio: 1/1; object-fit: cover;" alt="Album Foto 1">
+                    </div>
+                </div>
+                <!-- Photo 2 -->
+                <div class="col-6 col-md-3">
+                    <div class="card bg-dark card-project h-100 p-1">
+                        <img id="" src="mcqueen2.jpeg" class="img-fluid rounded" style="aspect-ratio: 1/1; object-fit: cover;" alt="Album Foto 2">
+                    </div>
+                </div>
+                <!-- Photo 3 -->
+                <div class="col-6 col-md-3">
+                    <div class="card bg-dark card-project h-100 p-1">
+                        <img id="" src="mcqueen5.avif" class="img-fluid rounded" style="aspect-ratio: 1/1; object-fit: cover;" alt="Album Foto 3">
+                    </div>
+                </div>
+                <!-- Photo 4 -->
+                <div class="col-6 col-md-3">
+                    <div class="card bg-dark card-project h-100 p-1">
+                        <img id="" src="mcquen.webp" class="img-fluid rounded" style="aspect-ratio: 1/1; object-fit: cover;" alt="Album Foto 4">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Kontak -->
+        <section id="contact" class="mb-5 py-4">
+            <h2 class="section-title">Hubungi Saya</h2>
+            <div class="card p-4 shadow-sm bg-light">
+                <p>Tertarik untuk berkolaborasi atau ingin mengetahui lebih lanjut tentang proyek saya? Jangan ragu untuk menghubungi melalui:</p>
+                <ul class="list-unstyled">
+                    <li><strong>NO AMBULAN</strong> <a href="mailto:rifkifauzan.garut@example.com" class="text-danger">119</a></li>
+                    <li><strong>NO DARURAT</strong> <a href="#" class="text-danger"></a>030</li>
+                    <li><strong>NO PEMADAM KEBAKARAN:</strong> <a href="#" class="text-danger">113</a></li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p class="mb-0">Dibuat dengan semangat oleh Muhamad Rifki Fauzan | SMAN 10 Garut &copy; 2024</p>
+    </footer>
+
+    <!-- Memuat Bootstrap 5 JS Bundle (Wajib untuk komponen interaktif) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Fungsi untuk memperbarui foto profil
+        function updateProfileImage() {
+            const imageUrl = document.getElementById('imageURL').value;
+            const profileImgElement = document.getElementById('profileImage');
+            
+            // Cek jika URL tidak kosong dan tampak seperti URL
+            if (imageUrl && (imageUrl.startsWith('http') || imageUrl.startsWith('data:'))) {
+                // Gunakan try-catch untuk penanganan error gambar
+                profileImgElement.onerror = function() {
+                    console.error("Gagal memuat gambar dari URL yang diberikan.");
+                    // Ganti kembali ke placeholder jika gagal
+                    profileImgElement.src = "https://placehold.co/180x180/B91C1C/ffffff?text=ERROR";
+                    alert("Gagal memuat gambar. Pastikan URL gambar valid.");
+                };
+                profileImgElement.src = imageUrl;
+                
+                // Opsional: Sembunyikan input setelah berhasil
+                document.getElementById('photo-input-container').classList.add('d-none');
+            } else {
+                // Tampilkan pesan jika URL tidak valid
+                alert("Mohon masukkan URL gambar yang valid.");
+            }
+        }
+
+        // Fungsi baru untuk memperbarui 4 foto album
+        function updateAlbumPhotos() {
+            const albumData = [
+                { inputId: 'albumURL1', imageId: 'albumImage1', placeholderText: 'Album 1', color: 'B91C1C' },
+                { inputId: 'albumURL2', imageId: 'albumImage2', placeholderText: 'Album 2', color: '1f2937' },
+                { inputId: 'albumURL3', imageId: 'albumImage3', placeholderText: 'Album 3', color: 'B91C1C' },
+                { inputId: 'albumURL4', imageId: 'albumImage4', placeholderText: 'Album 4', color: '1f2937' }
+            ];
+            
+            let updatedCount = 0;
+
+            albumData.forEach((item, index) => {
+                const imageUrl = document.getElementById(item.inputId).value;
+                const imageElement = document.getElementById(item.imageId);
+
+                if (imageUrl && (imageUrl.startsWith('http') || imageUrl.startsWith('data:'))) {
+                    imageElement.onerror = function() {
+                        console.error("Gagal memuat gambar dari URL Album " + (index + 1));
+                        // Ganti dengan placeholder ERROR jika URL gagal dimuat
+                        imageElement.src = `https://placehold.co/400x400/${item.color}/ffffff?text=ERROR+Album+${index+1}`; 
+                    };
+                    imageElement.src = imageUrl;
+                    updatedCount++;
+                } else if (imageUrl === '') {
+                     // Reset ke placeholder default jika input dikosongkan
+                    imageElement.src = `https://placehold.co/400x400/${item.color}/ffffff?text=Album+${index+1}`;
+                }
+            });
+
+            if (updatedCount > 0) {
+                // Notifikasi sederhana untuk album
+                document.getElementById('album-message').textContent = `Berhasil memperbarui ${updatedCount} foto album.`;
+                document.getElementById('album-message').classList.remove('d-none', 'alert-danger');
+                document.getElementById('album-message').classList.add('alert-success');
+                setTimeout(() => {
+                    document.getElementById('album-message').classList.add('d-none');
+                }, 3000);
+            } else {
+                 // Notifikasi jika tidak ada URL yang dimasukkan
+                 document.getElementById('album-message').textContent = `Tidak ada URL gambar yang dimasukkan.`;
+                 document.getElementById('album-message').classList.remove('d-none', 'alert-success');
+                 document.getElementById('album-message').classList.add('alert-danger');
+                 setTimeout(() => {
+                    document.getElementById('album-message').classList.add('d-none');
+                }, 3000);
+            }
+        }
+
+        // Mengganti alert bawaan dengan modal/pesan jika perlu
+        function alert(message) {
+            const container = document.getElementById('photo-input-container');
+            let alertBox = container.querySelector('.alert-message');
+
+            if (!alertBox) {
+                alertBox = document.createElement('div');
+                alertBox.className = 'alert alert-danger mt-2 alert-message';
+                alertBox.setAttribute('role', 'alert');
+                container.appendChild(alertBox);
+            }
+
+            alertBox.textContent = message;
+            alertBox.style.display = 'block';
+
+            setTimeout(() => {
+                alertBox.style.display = 'none';
+            }, 5000);
+        }
+
+    </script>
+</body>
+</html>
