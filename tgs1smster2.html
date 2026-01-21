@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Banjir Bandang Aceh</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">WASPADA BANJIR</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#beranda">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#edukasi">Edukasi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#berita">Berita Terkini</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-light text-danger ms-lg-2" href="#">Kontak Darurat</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="beranda" class="hero-section text-white d-flex align-items-center">
+        <div class="container text-center">
+            <h1 class="display-3 fw-bold">Tanggap Banjir Bandang Aceh</h1>
+            <p class="lead">Informasi terkini, mitigasi bencana, dan bantuan kemanusiaan untuk wilayah Aceh.</p>
+            <a href="#edukasi" class="btn btn-warning btn-lg mt-3">Pelajari Mitigasi</a>
+        </div>
+    </header>
+
+    <section id="edukasi" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Penyebab & Mitigasi</h2>
+                <p class="text-muted">Memahami risiko untuk meminimalkan dampak bencana.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-danger">Penyebab Utama</h5>
+                            <p class="card-text">Curah hujan ekstrem di pegunungan Bukit Barisan dan penggundulan hutan memicu debit air yang tidak terkendali.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm text-white bg-danger">
+                        <div class="card-body">
+                            <h5 class="card-title">Tindakan Darurat</h5>
+                            <p class="card-text">Segera mengungsi ke titik aman (dataran tinggi) jika mendengar gemuruh dari arah sungai atau gunung.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-danger">Pasca Bencana</h5>
+                            <p class="card-text">Waspadai penyakit pasca banjir dan pastikan instalasi listrik aman sebelum masuk kembali ke rumah.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="berita" class="bg-light py-5">
+        <div class="container">
+            <h2 class="fw-bold mb-4">Update Wilayah Terdampak</h2>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="alert alert-warning border-start border-4 border-warning">
+                        <strong>Laporan Terbaru:</strong> Banjir bandang melanda wilayah Aceh Tenggara dan Aceh Tengah akibat curah hujan tinggi semalam.
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1547683905-f686c993aae5?auto=format&fit=crop&w=800&q=80" class="img-fluid rounded shadow mb-4" alt="Ilustrasi Banjir">
+                </div>
+                <div class="col-lg-4">
+                    <div class="p-4 bg-white shadow-sm rounded">
+                        <h5>Nomor Penting</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">📞 BPBD Aceh: (0651) xxxxx</li>
+                            <li class="mb-2">📞 SAR Banda Aceh: 115</li>
+                            <li class="mb-2">📞 PMI: (0651) xxxxx</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p>&copy; 2026 Pusat Informasi Bencana Aceh. Dibuat untuk kesiapsiagaan masyarakat.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
